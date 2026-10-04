@@ -1,5 +1,7 @@
 # FTL Voice Prompt
 
+![FTL Voice Prompt 项目封面](docs/assets/project-cover.png)
+
 Windows-only local-first voice prompt input panel.
 
 新用户请先阅读 [中文快速开始](docs/getting-started.md)。项目以 Windows + NVIDIA 显卡为主要使用环境，提供明确的环境初始化、模型准备和 VS Code F5 启动入口；SenseVoice Small 的 CPU 路径可单独检查。
