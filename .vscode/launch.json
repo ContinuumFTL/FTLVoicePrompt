@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "FTL Voice Prompt（快速启动）",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "cmd.exe /d /s /c \"pnpm.cmd start\"",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "FTL Voice Prompt（桌面开发）",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "cmd.exe /d /s /c \"pnpm.cmd tauri:dev\"",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PATH": "${env:USERPROFILE}\\.cargo\\bin;${env:PATH}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+body.recording-overlay-page { min-width: 0; min-height: 0; background: transparent; overflow: hidden; }
+.recording-overlay-page #root { height: 100vh; display: grid; place-items: center; }
+.recording-capsule { width: 336px; height: 64px; border: 1px solid #ffffff26; border-radius: 34px; display: flex; align-items: center; gap: 14px; padding: 10px 18px; color: #f5f8ff; background: #172127f5; box-shadow: 0 6px 18px #00000038; user-select: none; }
+.capsule-mic { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #82f5d0; background: #69e3bc1a; flex: none; }
+.capsule-mic.capsule-error { color: #ffafac; background: #ff80701a; }
+.capsule-content { flex: 1; min-width: 0; }
+.capsule-label { display: block; font-size: 11px; letter-spacing: .04em; color: #d5e6e4; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.capsule-wave { height: 32px; display: flex; align-items: center; gap: 3px; }
+.capsule-wave i { display: block; width: 3px; flex: none; border-radius: 3px; background: #82f5d0; transition: height 80ms linear, opacity 80ms linear; }
+.capsule-key { font-size: 11px; line-height: 18px; border-left: 1px solid #ffffff24; padding-left: 14px; color: #d4dedf; white-space: nowrap; }
+.capsule-key span { display: block; color: #91a4a8; font-size: 10px; }
+@media (prefers-reduced-motion: reduce) { .capsule-wave i { transition: none; } }

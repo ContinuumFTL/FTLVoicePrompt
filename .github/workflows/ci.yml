@@ -1,0 +1,47 @@
+name: Windows checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    env:
+      FTL_REAL_MODELS: "0"
+      FTL_REAL_MICROPHONE: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.13.0"
+      - uses: pnpm/action-setup@v4
+        with:
+          version: "10.28.0"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Rust
+        run: rustup toolchain install 1.88.0 --profile minimal
+      - name: Select Rust
+        run: rustup default 1.88.0
+      - name: Prepare CPU environment without model downloads
+        shell: powershell
+        run: ./scripts/setup.ps1 -Device cpu -SkipModels
+      - name: Check launch configuration without opening an app
+        run: pnpm start:check
+      - name: Launcher regressions
+        run: node --test scripts/start.test.mjs
+      - name: Frontend tests
+        run: pnpm test --no-cache
+      - name: Python tests
+        run: ./.venv/Scripts/python.exe -X utf8 -m pytest backend -q
+      - name: Rust tests
+        run: cargo test --locked --manifest-path src-tauri/Cargo.toml
+      - name: Desktop release build
+        run: pnpm tauri:build --no-bundle

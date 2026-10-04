@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FTL Voice Prompt</title>
+    <style>
+      html, body { margin: 0; }
+      .startup { height: 100vh; display: grid; place-content: center; gap: 12px; padding: 24px; box-sizing: border-box; background: #f7f8fa; color: #1d2430; font: 14px "Segoe UI", "Microsoft YaHei", sans-serif; }
+      .startup p { margin: 0; color: #536174; }
+      .startup progress { width: 280px; height: 8px; accent-color: #0f766e; }
+      html.overlay-startup .startup { display: none; }
+    </style>
+    <script>if (location.hash === "#recording-overlay") document.documentElement.classList.add("overlay-startup");</script>
+  </head>
+  <body>
+    <div id="root"><div class="startup" role="status" aria-live="polite"><strong>FTL Voice Prompt</strong><p id="startup-message">正在打开录音界面…</p><progress aria-label="正在打开录音界面"></progress></div></div>
+    <script>
+      window.setTimeout(function () {
+        var message = document.getElementById("startup-message");
+        if (message) message.textContent = "界面加载时间较长，请稍候。若一直没有变化，请关闭后重新打开。";
+      }, 15000);
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

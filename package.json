@@ -1,0 +1,35 @@
+{
+  "name": "ftl-voice-prompt",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "pnpm@10.28.0",
+  "engines": { "node": "^22.0.0 || ^24.0.0" },
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/start.mjs",
+    "start:check": "node scripts/start.mjs --check",
+    "setup": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/setup.ps1",
+    "dev": "vite --host 127.0.0.1",
+    "tauri:dev": "node scripts/start.mjs --dev",
+    "build": "tsc && vite build",
+    "tauri:build": "tauri build",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.8.0",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.8.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.4",
+    "jsdom": "^25.0.1",
+    "vite": "^5.4.2",
+    "vitest": "^2.0.5"
+  }
+}
